@@ -7,8 +7,12 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Use the cors middleware
-app.use(cors());
+// Use the cors middleware with specific options
+app.use(cors({
+  origin: 'http://2erndin.com', // Replace with the origin of your application
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
